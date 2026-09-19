@@ -1,0 +1,58 @@
+# OOP
+
+class HocSinh:
+    def __init__(self,name,age,classroom):
+        self.name = name
+        self.age = age
+        self.classroom = classroom
+    def __str__(self):
+        return f"Ho va ten hoc sinh : {self.name} , Tuoi : {self.age} , Lop hoc : {self.classroom}"
+
+class QuanLiHocSinh:
+    def __init__(self):
+        self.list = []
+
+    def add(self,student):
+        self.list.append(student)
+    def remove(self,name):
+        for student in self.list:
+            if student.name == name:
+                self.list.remove(student)
+                return True
+        return False
+    def show_list(self):
+        for student in self.list:
+            print(student)
+
+def menu():
+    qlhs = QuanLiHocSinh()
+    is_running = True
+    while is_running:
+        print("1. add student")
+        print("2. remove student")
+        print("3. show student")
+        print("4. exit")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            name = input("Enter student's name: ")
+            age = int(input("Enter student's age: "))
+            classroom = input("Enter student's classroom: ")
+            student = HocSinh(name,age,classroom)
+            qlhs.add(student)
+            print("Student added successfully")
+        elif choice == "2":
+            name = input("Enter student's name: ")
+            if qlhs.remove(name):
+                print("student removed successfully")
+            else:
+                print("student not exist")
+        elif choice == "3":
+            qlhs.show_list()
+        elif choice == "4":
+            print("exit")
+            is_running = False
+        else:
+            print("invalid choice")
+
+if __name__ == "__main__":
+    menu()
