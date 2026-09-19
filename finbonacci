@@ -1,0 +1,24 @@
+#Math
+
+#Finbonacci
+
+def finbonacci(n):
+    if n < 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+
+    fibo = [0,1]
+    for i in range(2,n):
+        next_fibo = fibo[i-1] + fibo[i-2]
+        fibo.append(next_fibo)
+    return fibo
+try:
+    n = int(input("Enter number : "))
+    fin = finbonacci(n)
+    print(f"Your result : {fin}")
+except Exception as e:
+    print(f"Your error : {e}")
+
